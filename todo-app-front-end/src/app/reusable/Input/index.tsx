@@ -1,6 +1,13 @@
 import { ChangeEvent } from "react";
 
-function index({ type, label, setData }: { type: string; label: string; setData: Function }): JSX.Element {
+interface Props {
+   type: string;
+   label: string;
+   setData: Function;
+   dataState: string;
+}
+
+function index({ type, label, setData, dataState }: Props): JSX.Element {
    function handleChange(e: ChangeEvent<HTMLInputElement>) {
       setData(e.target.value);
    }
@@ -14,6 +21,7 @@ function index({ type, label, setData }: { type: string; label: string; setData:
             type={type}
             id={type}
             name={type}
+            value={dataState}
             onChange={handleChange}
             required
             className="w-full p-2 rounded-md border-2 border-unactiveGrey outline-none"
