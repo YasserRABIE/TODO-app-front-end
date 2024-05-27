@@ -1,5 +1,3 @@
-const url = "http://localhost:3000/";
-
 interface response<T> {
    status: number;
    success: boolean;
@@ -19,7 +17,7 @@ export async function makeRequest<T>(endpoint: string, method: string = "GET", b
    }
 
    try {
-      const response = await fetch(url + endpoint, options);
+      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + endpoint, options);
 
       if (!response.ok) {
          throw new Error("Failed to fetch data");
@@ -28,6 +26,6 @@ export async function makeRequest<T>(endpoint: string, method: string = "GET", b
       const jsonData = (await response.json()) as response<T>;
       return { response: jsonData };
    } catch (error) {
-      return { error: "some err" };
+      return { error: error };
    }
 }
