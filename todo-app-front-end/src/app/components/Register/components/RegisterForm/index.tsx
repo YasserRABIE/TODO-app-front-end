@@ -2,11 +2,14 @@
 import Input from "@/app/reusable/Input";
 import { makeRequest } from "@/app/scripts/makeRequest";
 import React, { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import Lottie from "lottie-react";
 import data from "../../../../assets/lottie/Animation_loading.json";
 import Cookies from "js-cookie";
 
 function Index() {
+   const router = useRouter();
+
    const [loading, setLoading] = useState(false);
    const [name, setName] = useState("");
    const [email, setEmail] = useState("");
@@ -29,6 +32,7 @@ function Index() {
       }
 
       Cookies.set("Authorization", result.response.data.token);
+      router.push("/");
 
       setName("");
       setEmail("");
@@ -38,7 +42,7 @@ function Index() {
    };
 
    return (
-      <form onSubmit={createAccount} className="felx flex-col w-96 p-4 bg-white rounded-md shadow-md">
+      <form id="/register" onSubmit={createAccount} className="felx flex-col w-96 p-4 bg-white rounded-md shadow-md">
          <Input dataState={name} setData={setName} type="usernamw" label="name:" />
          <Input dataState={email} setData={setEmail} type="email" label="Email:" />
          <Input dataState={password} setData={setPassword} type="password" label="Password:" />
