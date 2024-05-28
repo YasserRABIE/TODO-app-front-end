@@ -7,7 +7,7 @@ import data from "../../../../assets/lottie/Animation_loading.json";
 
 function Index() {
    const [loading, setLoading] = useState(false);
-   const [username, setUsername] = useState("");
+   const [name, setName] = useState("");
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
 
@@ -16,17 +16,18 @@ function Index() {
       setLoading(true);
 
       const result = await makeRequest<{ token: string }>("register", "POST", {
-         username: username,
+         name: name,
          email: email,
          password: password,
       });
 
       if (!result.response?.success) {
          setLoading(false);
-         return;
+
+         return result.error;
       }
 
-      setUsername("");
+      setName("");
       setEmail("");
       setPassword("");
 
@@ -35,7 +36,7 @@ function Index() {
 
    return (
       <form onSubmit={createAccount} className="felx flex-col w-96 p-4 bg-white rounded-md shadow-md">
-         <Input dataState={username} setData={setUsername} type="usernamw" label="Username:" />
+         <Input dataState={name} setData={setName} type="usernamw" label="name:" />
          <Input dataState={email} setData={setEmail} type="email" label="Email:" />
          <Input dataState={password} setData={setPassword} type="password" label="Password:" />
          <button
