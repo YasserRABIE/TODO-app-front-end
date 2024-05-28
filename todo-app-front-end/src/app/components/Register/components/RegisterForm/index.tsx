@@ -4,6 +4,7 @@ import { makeRequest } from "@/app/scripts/makeRequest";
 import React, { FormEvent, useState } from "react";
 import Lottie from "lottie-react";
 import data from "../../../../assets/lottie/Animation_loading.json";
+import Cookies from "js-cookie";
 
 function Index() {
    const [loading, setLoading] = useState(false);
@@ -26,6 +27,8 @@ function Index() {
 
          return result.error;
       }
+
+      Cookies.set("Authorization", result.response.data.token);
 
       setName("");
       setEmail("");
