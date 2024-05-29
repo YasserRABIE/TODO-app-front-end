@@ -4,7 +4,7 @@ interface response<T> {
    data: T;
 }
 
-export async function makeRequest<T>(endpoint: string, method: string, body?: object, headers = {}) {
+export async function MakeRequest<T>(endpoint: string, method: string, body?: object, headers = {}) {
    const options: RequestInit = {
       method: method,
       headers: {

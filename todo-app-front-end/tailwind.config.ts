@@ -19,7 +19,7 @@ const config: Config = {
          },
          colors: {
             primary: "#a18aff",
-            secondary: "#ca8bfe",
+            secondary: "#A28BFF",
             freelance: "#3fd4f4",
             personal: "#fd99af",
             work: "#fac608",

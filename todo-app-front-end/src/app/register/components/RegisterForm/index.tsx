@@ -1,11 +1,11 @@
 "use client";
 import Input from "@/app/reusable/Input";
-import { makeRequest } from "@/app/scripts/makeRequest";
 import React, { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import Lottie from "lottie-react";
-import data from "../../../../assets/lottie/Animation_loading.json";
+import data from "../../../assets/lottie/Animation_loading.json";
 import Cookies from "js-cookie";
+import { MakeRequest } from "@/app/scripts/makeRequest";
 
 function Index() {
    const router = useRouter();
@@ -19,7 +19,7 @@ function Index() {
       e.preventDefault();
       setLoading(true);
 
-      const result = await makeRequest<{ token: string }>("register", "POST", {
+      const result = await MakeRequest<{ token: string }>("register", "POST", {
          name: name,
          email: email,
          password: password,

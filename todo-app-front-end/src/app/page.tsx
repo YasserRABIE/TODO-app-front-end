@@ -1,16 +1,17 @@
 "use client";
-import Cookies from "js-cookie";
+import { useEffect } from "react";
 import HomePage from "./components/HomePage";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { HasToken } from "./scripts/auth";
 
 export default function Home() {
    const router = useRouter();
+
    useEffect(() => {
-      if (Cookies.get("Authorization") === "") {
-         router.push("/register");
+      if (!HasToken()) {
+         router.push("/");
       }
-   });
+   }, [router]);
 
    return (
       <main className="bg-primary h-screen">
