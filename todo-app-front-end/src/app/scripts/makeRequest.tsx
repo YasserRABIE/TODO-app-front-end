@@ -4,15 +4,16 @@ interface response<T> {
    data: T;
 }
 
-export async function makeRequest<T>(endpoint: string, method: string = "GET", body?: object) {
+export async function makeRequest<T>(endpoint: string, method: string, body?: object, headers = {}) {
    const options: RequestInit = {
       method: method,
       headers: {
          "Content-Type": "application/json",
+         ...headers,
       },
    };
 
-   if (method !== "GET" && body) {
+   if (method === "POST" && body) {
       options.body = JSON.stringify(body);
    }
 
