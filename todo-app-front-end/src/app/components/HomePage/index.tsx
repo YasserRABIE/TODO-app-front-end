@@ -23,7 +23,7 @@ function Index() {
          });
 
          if (!result.response?.success) {
-            router.push("/register");
+            router.push("/login");
             return result.error;
          }
 
