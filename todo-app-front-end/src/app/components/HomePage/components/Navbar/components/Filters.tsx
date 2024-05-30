@@ -9,7 +9,7 @@ function Filters({ setFilter }: { setFilter: Function }) {
             <FontAwesomeIcon icon={faCalendar} />
          </i>
          <div className="flex flex-col text-left">
-            <h1 className="mb-[40px]">Today Tasks</h1>
+            <h1 className="mb-[2.2rem]">Today Tasks</h1>
             <Filter setFilter={setFilter} title="Personal" bgColor="#3fd4f4" />
             <Filter setFilter={setFilter} title="Freelance" bgColor="#fd99af" />
             <Filter setFilter={setFilter} title="Work" bgColor="#fac608" />

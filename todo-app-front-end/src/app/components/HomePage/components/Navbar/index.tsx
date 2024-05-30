@@ -4,7 +4,7 @@ import Filters from "./components/Filters";
 
 function index({ name, setFilter }: { name: string | undefined; setFilter: Function }) {
    return (
-      <div className="h-screen bg-white min-w-[250px] p-[20px]">
+      <div className="h-screen bg-white min-w-[250px] p-[1.2rem]">
          <UserProfile name={name} />
          <Filters setFilter={setFilter} />
       </div>
