@@ -14,7 +14,7 @@ export default function Home() {
    }, [router]);
 
    return (
-      <main className="bg-primary h-screen">
+      <main className="bg-primary h-full">
          <HomePage />
       </main>
    );

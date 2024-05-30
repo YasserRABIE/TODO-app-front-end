@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { MakeRequest } from "@/app/scripts/makeRequest";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import MainContent from "./components/MainContent";
 
 interface UserData {
    name: string;
@@ -12,6 +13,7 @@ interface UserData {
 function Index() {
    const router = useRouter();
 
+   const [filter, setFilter] = useState("");
    const [user, setUser] = useState<UserData>({ name: "", email: "" });
 
    useEffect(() => {
@@ -31,15 +33,10 @@ function Index() {
       getUser();
    }, [router]);
 
-   useEffect(() => {
-      if (!user) {
-         router.push("/register");
-      }
-   }, [user, router]);
-
    return (
-      <div>
-         <Navbar name={user.name} />
+      <div className="flex">
+         <Navbar setFilter={setFilter} name={user.name} />
+         <MainContent />
       </div>
    );
 }
