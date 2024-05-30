@@ -4,8 +4,8 @@ import React, { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import Lottie from "lottie-react";
 import data from "../../../assets/lottie/Animation_loading.json";
-import Cookies from "js-cookie";
 import { MakeRequest } from "@/app/scripts/makeRequest";
+import { SetToken } from "@/app/scripts/auth";
 
 function Index() {
    const router = useRouter();
@@ -31,9 +31,8 @@ function Index() {
          return result.error;
       }
 
-      Cookies.set("Authorization", result.response.data.token, {
-         expires: 30,
-      });
+      SetToken(result.response.data.token);
+
       router.push("/");
 
       setName("");
