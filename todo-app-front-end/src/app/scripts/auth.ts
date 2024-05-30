@@ -15,3 +15,7 @@ export function HasToken() {
    }
    return true;
 }
+
+export function GetToken() {
+   return cookies.get("Authorization");
+}
