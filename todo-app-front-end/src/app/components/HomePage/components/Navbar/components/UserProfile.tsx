@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-function UserProfile({ name }: { name: string }) {
+function UserProfile({ name }: { name: string | undefined }) {
    return (
       <div className="flex gap-2 items-center pb-5 border-b-[2px] border-secondary">
          <Image
