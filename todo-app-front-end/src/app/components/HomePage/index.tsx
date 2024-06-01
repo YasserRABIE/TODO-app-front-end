@@ -35,7 +35,9 @@ function Index() {
 
    return (
       <div className="flex">
-         <Navbar setFilter={setFilter} name={user.name} />
+         <div className="min-w-[250px] ">
+            <Navbar setFilter={setFilter} name={user.name} />
+         </div>
          <MainContent />
       </div>
    );
