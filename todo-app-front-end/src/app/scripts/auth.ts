@@ -1,6 +1,7 @@
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
+
 export function SetToken(token: string) {
    cookies.set("Authorization", token, {
       path: "/",
@@ -18,4 +19,8 @@ export function HasToken() {
 
 export function GetToken() {
    return cookies.get("Authorization");
+}
+
+export function RemoveToken() {
+   return cookies.remove("Authorization");
 }
