@@ -38,7 +38,7 @@ function Index() {
          <div className="min-w-[250px] ">
             <Navbar setFilter={setFilter} name={user.name} />
          </div>
-         <MainContent />
+         <MainContent filter={filter} />
       </div>
    );
 }

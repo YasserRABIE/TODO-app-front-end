@@ -5,8 +5,13 @@ function Filter({ setFilter, title, bgColor }: { setFilter: Function; title: str
 
    useEffect(() => {
       const handleClick = () => {
+         if (filter.current?.innerText == "All") {
+            setFilter("");
+            return;
+         }
          if (filter.current) {
-            setFilter(filter.current.innerText);
+            const filterToLower = filter.current.innerText.toLocaleLowerCase();
+            setFilter(filterToLower);
          }
       };
 

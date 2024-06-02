@@ -6,12 +6,22 @@ import { TaskType } from "./interfaces/Task";
 import { MakeRequest } from "@/app/scripts/makeRequest";
 import { GetToken } from "@/app/scripts/auth";
 
-function Index() {
+interface Req {
+   method: string;
+   body: undefined | object;
+}
+
+function Index({ filter }: { filter: string }) {
    const [tasks, setTasks] = useState<TaskType[]>([]);
 
    useEffect(() => {
       const getTasks = async () => {
-         const result = await MakeRequest<{ tasks: TaskType[] }>("tasks", "GET", undefined, {
+         let request: Req = { method: "GET", body: undefined };
+         if (filter) {
+            request = { method: "POST", body: { filter: filter } };
+         }
+
+         const result = await MakeRequest<{ tasks: TaskType[] }>("tasks", request.method, request.body, {
             Authorization: `Bearer ${GetToken()}`,
          });
 
@@ -21,7 +31,7 @@ function Index() {
       };
 
       getTasks();
-   }, []);
+   }, [filter]);
 
    return (
       <section className="w-full p-[2.4rem]">
