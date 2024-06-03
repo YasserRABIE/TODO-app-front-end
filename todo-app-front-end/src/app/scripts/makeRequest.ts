@@ -2,6 +2,7 @@ interface response<T> {
    status: number;
    success: boolean;
    data: T;
+   error?: string;
 }
 
 export async function MakeRequest<T>(endpoint: string, method: string, body?: object, headers = {}) {

@@ -8,7 +8,6 @@ import { MakeRequest } from "@/app/scripts/makeRequest";
 import Link from "next/link";
 import { SetToken } from "@/app/scripts/auth";
 
-
 function Index() {
    const router = useRouter();
 
@@ -20,16 +19,18 @@ function Index() {
       e.preventDefault();
       setLoading(true);
 
-      const result = await MakeRequest<{ token: string }>("login", "POST", {
+      const result = await MakeRequest<{ token?: string; error?: string }>("login", "POST", {
          email: email,
          password: password,
       });
 
-      if (!result.response?.success) {
+      if (!result.response) {
          setLoading(false);
-
-         return result.error;
+         return;
       }
+
+      if (!result.response.data) return;
+      if (!result.response.data.token) return;
       SetToken(result.response.data.token);
 
       router.push("/");

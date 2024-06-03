@@ -4,8 +4,9 @@ import { MakeRequest } from "@/app/scripts/makeRequest";
 import { useEffect, useState } from "react";
 import MainContent from "./components/MainContent";
 import { GetToken } from "@/app/scripts/auth";
+import { ShowSuccessMessage } from "@/app/scripts/toast";
 
-interface UserData {
+export interface UserData {
    name: string;
    email: string;
 }
@@ -27,6 +28,7 @@ function Index() {
             return result.error;
          }
 
+         ShowSuccessMessage("Stay Hard!");
          setUser(result.response.data);
       };
 
