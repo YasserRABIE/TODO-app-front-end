@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TaskType } from "../components/HomePage/components/MainContent/interfaces/Task";
 import { MakeRequest } from "../scripts/makeRequest";
 import { GetToken } from "../scripts/auth";
+import { ShowErrorMessage } from "../scripts/toast";
 
 interface props {
    title: string;
@@ -33,6 +34,8 @@ function Task({ title, color, tasks, setTasks, idx }: props) {
       const newTasks = [...tasks];
       newTasks.splice(idx, 1);
       setTasks(newTasks);
+
+      ShowErrorMessage(result.response.data.message);
    };
 
    return (

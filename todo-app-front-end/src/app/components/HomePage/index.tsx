@@ -25,10 +25,10 @@ function Index() {
 
          if (!result.response?.success) {
             router.push("/login");
-            return result.error;
+            return;
          }
 
-         ShowSuccessMessage("Stay Hard!");
+         ShowSuccessMessage("Welcome back " + result.response.data.name);
          setUser(result.response.data);
       };
 
@@ -37,7 +37,7 @@ function Index() {
 
    return (
       <div className="flex">
-         <div className="min-w-[250px] ">
+         <div className="min-w-[250px]">
             <Navbar setFilter={setFilter} name={user.name} />
          </div>
          <MainContent filter={filter} />

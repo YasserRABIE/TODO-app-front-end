@@ -5,6 +5,7 @@ import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
 import { TaskType } from "../interfaces/Task";
 import { MakeRequest } from "@/app/scripts/makeRequest";
 import { GetToken } from "@/app/scripts/auth";
+import { ShowSuccessMessage } from "@/app/scripts/toast";
 
 function MainInput({ setTasks, tasks }: { setTasks: Function; tasks: TaskType[] }) {
    const [taskFilter, setTaskFilter] = useState({ color: "#3fd4f4", filter: "personal" });
@@ -36,10 +37,12 @@ function MainInput({ setTasks, tasks }: { setTasks: Function; tasks: TaskType[] 
          }
       );
 
-      if (!result.response?.success) return result.error;
+      if (!result.response?.success) return;
 
       setTasks([...tasks, task]);
       setTaskTitle("");
+
+      ShowSuccessMessage(result.response.data.message);
    };
 
    const handleEnter = async (e: KeyboardEvent) => {
@@ -64,10 +67,12 @@ function MainInput({ setTasks, tasks }: { setTasks: Function; tasks: TaskType[] 
             }
          );
 
-         if (!result.response?.success) return result.error;
+         if (!result.response?.success) return;
 
          setTasks([...tasks, task]);
          setTaskTitle("");
+
+         ShowSuccessMessage(result.response.data.message);
       }
    };
 

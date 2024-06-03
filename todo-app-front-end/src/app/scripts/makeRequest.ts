@@ -19,16 +19,8 @@ export async function MakeRequest<T>(endpoint: string, method: string, body?: ob
       options.body = JSON.stringify(body);
    }
 
-   try {
-      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + endpoint, options);
+   const response = await fetch(process.env.NEXT_PUBLIC_API_URL + endpoint, options);
 
-      if (!response.ok) {
-         throw new Error("Failed to fetch data");
-      }
-
-      const jsonData = (await response.json()) as response<T>;
-      return { response: jsonData };
-   } catch (error) {
-      return { error: error };
-   }
+   const jsonData = (await response.json()) as response<T>;
+   return { response: jsonData };
 }

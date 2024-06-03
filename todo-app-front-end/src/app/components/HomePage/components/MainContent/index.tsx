@@ -25,7 +25,7 @@ function Index({ filter }: { filter: string }) {
             Authorization: `Bearer ${GetToken()}`,
          });
 
-         if (!result.response?.success) return result.error;
+         if (!result.response?.success) return;
 
          setTasks(result.response.data.tasks);
       };
