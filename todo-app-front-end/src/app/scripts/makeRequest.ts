@@ -9,6 +9,7 @@ export async function MakeRequest<T>(endpoint: string, method: string, body?: ob
       method: method,
       headers: {
          "Content-Type": "application/json",
+         "ngrok-skip-browser-warning": "true",
          ...headers,
       },
    };
