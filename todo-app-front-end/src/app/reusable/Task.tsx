@@ -28,7 +28,7 @@ function Task({ title, color, tasks, setTasks, idx }: props) {
       );
 
       if (!result.response?.success) {
-         return result.error;
+         return;
       }
 
       const newTasks = [...tasks];
